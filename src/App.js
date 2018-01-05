@@ -33,6 +33,14 @@ class Login extends React.Component {
     }
 }
 
+const PrivateRoute = ({ component: Component, ...rest }) => (
+    <Route {...rest} render={(props) => (
+        fakeAuth.isAuthenticated === true
+            ? <Component {...props} />
+            : <Redirect to='/login' />
+    )} />
+)
+
 class App extends Component {
     render() {
         return (
@@ -45,6 +53,7 @@ class App extends Component {
 
                     <Route path='/public' component={Public} />
                     <Route path='/login' component={Login} />
+                    <PrivateRoute path='/protected' component={Protected} />
                 </div>
             </Router>
         );
