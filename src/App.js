@@ -33,6 +33,7 @@ class Login extends React.Component {
     }
 }
 
+// testing route authentication
 const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route {...rest} render={(props) => (
         fakeAuth.isAuthenticated === true
